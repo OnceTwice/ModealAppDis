@@ -5,15 +5,14 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="데이터 가져오기"/>
+        android:text="버튼2"/>
 
-    <TextView
-        android:id="@+id/textView"
+    <ListView
+        android:id="@android:id/list"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""/>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
