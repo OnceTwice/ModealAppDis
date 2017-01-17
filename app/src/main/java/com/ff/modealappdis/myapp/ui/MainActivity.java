@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.ff.modealappdis.R;
 import com.ff.modealappdis.myapp.ui.user.UserList;
+import com.ff.modealappdis.myapp.ui.user.WriteList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +20,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, UserList.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, WriteList.class);
                 startActivity(intent);
             }
         });

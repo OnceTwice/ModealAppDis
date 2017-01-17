@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".myapp.ui.user.UserList"/>
+        <activity android:name=".myapp.ui.user.WriteList"/>
     </application>
 
 </manifest>
