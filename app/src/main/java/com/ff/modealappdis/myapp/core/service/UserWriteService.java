@@ -12,8 +12,9 @@ import java.util.List;
 
 public class UserWriteService {
 
-    public List<User> fetchUserList(String name, String id, String password) {
-        String url = "http://192.168.1.26:8088/myapp-api/api/user/input";
+    public List<User> fetchUserList(String id, String password, String gender) {
+        // String url = "http://192.168.1.26:8088/myapp-api/api/user/input";
+        String url = "http://192.168.1.26:8088/modeal/user/app/input";
         HttpRequest httpRequest = HttpRequest.get(url);
 
         httpRequest.contentType(HttpRequest.CONTENT_TYPE_FORM);     // 전달 타입
@@ -21,7 +22,7 @@ public class UserWriteService {
         httpRequest.connectTimeout(3000);
         httpRequest.readTimeout(3000);
 
-        int responseCode = httpRequest.send("name="+name+"&id="+id+"&password="+password).code();
+        int responseCode = httpRequest.send("id="+id+"&password="+password+"&gender="+gender).code();
 
         if(responseCode != HttpURLConnection.HTTP_OK) {
             throw new RuntimeException("HTTP Response : " + responseCode);

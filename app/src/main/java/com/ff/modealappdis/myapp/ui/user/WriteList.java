@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.ff.modealappdis.R;
 import com.ff.modealappdis.myapp.core.domain.User;
@@ -22,6 +24,8 @@ public class WriteList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.write_list);
 
+        
+
         findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,12 +35,10 @@ public class WriteList extends AppCompatActivity {
     }
 
     private class FetchUserListAsyncTask extends SafeAsyncTask<List<User>> {
+        String gender = "";
+
         @Override
         public List<User> call() throws Exception {
-            EditText editText1 = (EditText)findViewById(R.id.name);
-            Log.d("name : ", editText1.getText().toString());
-            String name = editText1.getText().toString();
-
             EditText editText2 = (EditText)findViewById(R.id.id);
             Log.d("id : ", editText2.getText().toString());
             String id = editText2.getText().toString();
@@ -45,7 +47,38 @@ public class WriteList extends AppCompatActivity {
             Log.d("password : ", editText3.getText().toString());
             String password = editText3.getText().toString();
 
-            List<User> list = userService.fetchUserList(name, id, password);
+
+            RadioGroup group = (RadioGroup) findViewById(R.id.radioGroupGender);
+            RadioButton man = (RadioButton) findViewById(R.id.radio_man);
+            RadioButton woman = (RadioButton) findViewById(R.id.radio_woman);
+
+            if(man.isChecked()) {
+                gender = "man";
+//                Log.d("젠더젠더12121212", gender);
+            }
+            else if(woman.isChecked()) {
+                gender = "woman";
+//                Log.d("젠더젠더13131313", gender);
+            }
+
+            group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                    switch (i) {
+                        case R.id.radio_man :
+                            gender = "man";
+//                            Log.d("젠더젠더", gender);
+                            break;
+                        case R.id.radio_woman :
+                            gender = "woman";
+//                            Log.d("젠더젠더", gender);
+                            break;
+                    }
+                }
+            });
+            Log.d("gender : ", gender);
+
+            List<User> list = userService.fetchUserList(id, password, gender);
 
             return list;
         }

@@ -70,6 +70,8 @@ public class UserListArrayAdapter extends ArrayAdapter<User> {
         TextView textView3 = (TextView)view.findViewById(R.id.password);
         textView3.setText("비밀번호 : " + user.getName());
 
+
+
         return view;
 
         // return super.getView(position, convertView, parent);
