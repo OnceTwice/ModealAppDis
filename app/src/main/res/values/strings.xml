@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ModealAppDis</string>
+    <string name="spinner_year">년도입력</string>
+    <string name="spinner_month">월입력</string>
+    <string name="spinner_day">일입력</string>
+    <string name="spinner_city">도시입력</string>
+    <string name="spinner_gu">구입력</string>
+    <string name="spinner_dong">동입력</string>
 </resources>

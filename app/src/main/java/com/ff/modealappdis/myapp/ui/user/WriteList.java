@@ -5,9 +5,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import com.ff.modealappdis.R;
 import com.ff.modealappdis.myapp.core.domain.User;
@@ -23,8 +25,6 @@ public class WriteList extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.write_list);
-
-        
 
         findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +46,6 @@ public class WriteList extends AppCompatActivity {
             EditText editText3 = (EditText)findViewById(R.id.password);
             Log.d("password : ", editText3.getText().toString());
             String password = editText3.getText().toString();
-
 
             RadioGroup group = (RadioGroup) findViewById(R.id.radioGroupGender);
             RadioButton man = (RadioButton) findViewById(R.id.radio_man);
@@ -77,6 +76,17 @@ public class WriteList extends AppCompatActivity {
                 }
             });
             Log.d("gender : ", gender);
+
+            ((Spinner)findViewById(R.id.city)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                    Log.d("------>", "onNothingSelected");
+                }
+            });
 
             List<User> list = userService.fetchUserList(id, password, gender);
 

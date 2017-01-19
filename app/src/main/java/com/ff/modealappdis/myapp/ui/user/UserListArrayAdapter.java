@@ -58,17 +58,13 @@ public class UserListArrayAdapter extends ArrayAdapter<User> {
         // 프로필세팅
         ImageLoader.getInstance().displayImage(user.getProfilePic(), (ImageView)view.findViewById(R.id.profile), displayImageOptions);
 
-        // 이름세팅
-        TextView textView1 = (TextView)view.findViewById(R.id.name);
-        textView1.setText("이름 : " + user.getName());
-
         // ID세팅
-        TextView textView2 = (TextView)view.findViewById(R.id.id);
-        textView2.setText("ID : "+user.getId());
+        TextView textView1 = (TextView)view.findViewById(R.id.id);
+        textView1.setText("ID : "+user.getId());
 
         // 비밀번호세팅
-        TextView textView3 = (TextView)view.findViewById(R.id.password);
-        textView3.setText("비밀번호 : " + user.getName());
+        TextView textView2 = (TextView)view.findViewById(R.id.password);
+        textView2.setText("비밀번호 : " + user.getName());
 
 
 
