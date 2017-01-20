@@ -3,9 +3,12 @@ package com.ff.modealappdis.myapp.ui.user;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -21,6 +24,17 @@ import java.util.List;
 
 public class WriteList extends AppCompatActivity {
     private UserWriteService userService = new UserWriteService();
+
+    private EditText etID;
+    private EditText etPassword;
+    private EditText etPasswordConfirm;
+    private RadioGroup group;
+    private RadioButton man;
+    private RadioButton woman;
+    private Spinner spinnerCity;
+    private Button btnSubmit;
+    private Button btnCancel;
+
     String id = "";
     String password = "";
     String gender = "";
@@ -31,19 +45,44 @@ public class WriteList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.write_list);
 
-        /********   id입력    ********/
-        EditText editText2 = (EditText)findViewById(R.id.id);
-        id = editText2.getText().toString();
+        etID = (EditText)findViewById(R.id.id);
+        etPassword = (EditText)findViewById(R.id.etPassword);
+        etPasswordConfirm = (EditText)findViewById(R.id.etPasswordConfirm) ;
+        group = (RadioGroup) findViewById(R.id.radioGroupGender);
+        man = (RadioButton) findViewById(R.id.radio_man);
+        woman = (RadioButton) findViewById(R.id.radio_woman);
+        spinnerCity = (Spinner)findViewById(R.id.city);
+        btnSubmit = (Button)findViewById(R.id.btnSubmit);
+        btnCancel = (Button)findViewById(R.id.btnCancel);
 
-        /********   password입력    ********/
-        EditText editText3 = (EditText)findViewById(R.id.password);
-        password = editText3.getText().toString();
 
-        /********   성별입력    ********/
-        RadioGroup group = (RadioGroup) findViewById(R.id.radioGroupGender);
-        RadioButton man = (RadioButton) findViewById(R.id.radio_man);
-        RadioButton woman = (RadioButton) findViewById(R.id.radio_woman);
+        etPasswordConfirm.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String password = etPassword.getText().toString();
+                String confirm = etPasswordConfirm.getText().toString();
+
+//                if( password.equals(confirm) ) {
+//                    etPassword.setBackgroundColor(Color.GREEN);
+//                    etPasswordConfirm.setBackgroundColor(Color.GREEN);
+//                } else {
+//                    etPassword.setBackgroundColor(Color.RED);
+//                    etPasswordConfirm.setBackgroundColor(Color.RED);
+//                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        /********  성별입력(최초선택)    ********/
         if(man.isChecked()) {
             gender = "man";
 //            Log.d("젠더젠더12121212", gender);
@@ -53,6 +92,7 @@ public class WriteList extends AppCompatActivity {
 //            Log.d("젠더젠더13131313", gender);
         }
 
+        /********  성별입력(변경)    ********/
         group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -70,10 +110,11 @@ public class WriteList extends AppCompatActivity {
         });
 
         /********   도시입력    ********/
-        ((Spinner)findViewById(R.id.city)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-
+                city = (String)adapterView.getItemAtPosition(position);
+//                Log.d("------>city", city);
             }
 
             @Override
@@ -82,20 +123,58 @@ public class WriteList extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 아이디 입력 확인
+                if( etID.getText().toString().length() == 0 ) {
+                    Toast.makeText(WriteList.this, "ID를 입력하세요!", Toast.LENGTH_SHORT).show();
+                    etID.requestFocus();
+                    return;
+                }
+
+                // 비밀번호 입력 확인
+                if( etPassword.getText().toString().length() == 0 ) {
+                    Toast.makeText(WriteList.this, "비밀번호를 입력하세요!", Toast.LENGTH_SHORT).show();
+                    etPassword.requestFocus();
+                    return;
+                }
+
+                // 비밀번호 확인 입력 확인
+                if( etPasswordConfirm.getText().toString().length() == 0 ) {
+                    Toast.makeText(WriteList.this, "비밀번호 확인을 입력하세요!", Toast.LENGTH_SHORT).show();
+                    etPasswordConfirm.requestFocus();
+                    return;
+                }
+
+                // 비밀번호 일치 확인
+                if( !etPassword.getText().toString().equals(etPasswordConfirm.getText().toString()) ) {
+                    Toast.makeText(WriteList.this, "비밀번호가 일치하지 않습니다!", Toast.LENGTH_SHORT).show();
+                    etPassword.setText("");
+                    etPasswordConfirm.setText("");
+                    etPassword.requestFocus();
+                    return;
+                }
+
                 new FetchUserListAsyncTask().execute();
             }
         });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
     }
 
     private class FetchUserListAsyncTask extends SafeAsyncTask<List<User>> {
 
         @Override
         public List<User> call() throws Exception {
-            Log.d("id : ", id);
-            Log.d("password : ", password);
+            Log.d("id : ", etID.getText().toString());
+            Log.d("password : ", etPassword.getText().toString());
             Log.d("gender ", gender);
             Log.d("city", city);
 
