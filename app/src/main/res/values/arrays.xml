@@ -1,76 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="year">
-        <item>1980</item>
-        <item>1981</item>
-        <item>1982</item>
-        <item>1983</item>
-        <item>1984</item>
-        <item>1985</item>
-        <item>1986</item>
-        <item>1987</item>
-        <item>1988</item>
-        <item>1989</item>
-        <item>1990</item>
-        <item>1991</item>
-        <item>1992</item>
-        <item>1993</item>
-        <item>1994</item>
-        <item>1995</item>
-        <item>1996</item>
-        <item>1997</item>
-        <item>1998</item>
-        <item>1999</item>
-        <item>2000</item>
-    </string-array>
-
     <string-array name="month">
-        <item>1월</item>
-        <item>2월</item>
-        <item>3월</item>
-        <item>4월</item>
-        <item>5월</item>
-        <item>6월</item>
-        <item>7월</item>
-        <item>8월</item>
-        <item>9월</item>
-        <item>10월</item>
-        <item>11월</item>
-        <item>12월</item>
-    </string-array>
-
-    <string-array name="day">
-        <item>1일</item>
-        <item>2일</item>
-        <item>3일</item>
-        <item>4일</item>
-        <item>5일</item>
-        <item>6일</item>
-        <item>7일</item>
-        <item>8일</item>
-        <item>9일</item>
-        <item>10일</item>
-        <item>11일</item>
-        <item>12일</item>
-        <item>13일</item>
-        <item>14일</item>
-        <item>15일</item>
-        <item>16일</item>
-        <item>17일</item>
-        <item>18일</item>
-        <item>19일</item>
-        <item>20일</item>
-        <item>21일</item>
-        <item>22일</item>
-        <item>23일</item>
-        <item>24일</item>
-        <item>25일</item>
-        <item>26일</item>
-        <item>27일</item>
-        <item>28일</item>
-        <item>29일</item>
-        <item>30일</item>
-        <item>31일</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
 
     <string-array name="city">
@@ -84,10 +26,30 @@
 
     <string-array name="gu">
         <item>종로구</item>
+        <item>용산구</item>
+        <item>광진구</item>
+        <item>중랑구</item>
+        <item>강북구</item>
+        <item>노원구</item>
+        <item>서대문구</item>
+        <item>양천구</item>
+        <item>구로구</item>
+        <item>영등포구</item>
+        <item>관악구</item>
         <item>강남구</item>
+        <item>강동구</item>
+        <item>중구</item>
+        <item>성동구</item>
+        <item>동대문구</item>
+        <item>성북구</item>
+        <item>도봉구</item>
+        <item>은평구</item>
+        <item>마포구</item>
+        <item>강서구</item>
+        <item>금천구</item>
+        <item>동작구</item>
         <item>서초구</item>
         <item>송파구</item>
-        <item>성북구</item>
     </string-array>
 
     <string-array name="dong">

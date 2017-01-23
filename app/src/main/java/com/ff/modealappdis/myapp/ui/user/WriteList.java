@@ -28,17 +28,47 @@ public class WriteList extends AppCompatActivity {
     private EditText etID;
     private EditText etPassword;
     private EditText etPasswordConfirm;
+
     private RadioGroup group;
     private RadioButton man;
     private RadioButton woman;
+
     private Spinner spinnerCity;
+    private Spinner spinnerGu;
+    private Spinner spinnerDong;
+
+    private EditText etYear;
+    private Spinner spinnerMonth;
+    private EditText etDay;
+
+    private EditText etMarketName;
+    private EditText etMarketAddress;
+    private EditText etMarketAddressDetail;
+    private EditText etMarketPhoneNumber;
+    private EditText etMarketIntroduce;
+    private EditText etMarketIntroduceDetail;
+
     private Button btnSubmit;
     private Button btnCancel;
 
     String id = "";
     String password = "";
     String gender = "";
+
     String city = "";
+    String gu = "";
+    String dong = "";
+
+    String year = "";
+    String month = "";
+    String day = "";
+
+    String marketName = "";
+    String marketAddress = "";
+    String marketAddressDetail = "";
+    String marketPhoneNumber = "";
+    String marketIntroduce = "";
+    String marketIntroduceDetail = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,14 +78,30 @@ public class WriteList extends AppCompatActivity {
         etID = (EditText)findViewById(R.id.id);
         etPassword = (EditText)findViewById(R.id.etPassword);
         etPasswordConfirm = (EditText)findViewById(R.id.etPasswordConfirm) ;
+
         group = (RadioGroup) findViewById(R.id.radioGroupGender);
         man = (RadioButton) findViewById(R.id.radio_man);
         woman = (RadioButton) findViewById(R.id.radio_woman);
+
         spinnerCity = (Spinner)findViewById(R.id.city);
+        spinnerGu = (Spinner)findViewById(R.id.gu);
+        spinnerDong = (Spinner)findViewById(R.id.dong);
+
+        etYear = (EditText)findViewById(R.id.etYear);
+        spinnerMonth = (Spinner)findViewById(R.id.month);
+        etDay = (EditText)findViewById(R.id.etdDay);
+
+        etMarketName = (EditText)findViewById(R.id.etMarketName);
+        etMarketAddress = (EditText)findViewById(R.id.etMarketAddress);
+        etMarketAddressDetail = (EditText)findViewById(R.id.etMarketAddressDetail);
+        etMarketPhoneNumber = (EditText)findViewById(R.id.etMarketPhoneNumber);
+        etMarketIntroduce = (EditText)findViewById(R.id.etMarketIntroduce);
+        etMarketIntroduceDetail = (EditText)findViewById(R.id.etMarketIntroduceDetail);
+
         btnSubmit = (Button)findViewById(R.id.btnSubmit);
         btnCancel = (Button)findViewById(R.id.btnCancel);
 
-
+/*
         etPasswordConfirm.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -67,13 +113,13 @@ public class WriteList extends AppCompatActivity {
                 String password = etPassword.getText().toString();
                 String confirm = etPasswordConfirm.getText().toString();
 
-//                if( password.equals(confirm) ) {
-//                    etPassword.setBackgroundColor(Color.GREEN);
-//                    etPasswordConfirm.setBackgroundColor(Color.GREEN);
-//                } else {
-//                    etPassword.setBackgroundColor(Color.RED);
-//                    etPasswordConfirm.setBackgroundColor(Color.RED);
-//                }
+                if( password.equals(confirm) ) {
+                    etPassword.setBackgroundColor(Color.GREEN);
+                    etPasswordConfirm.setBackgroundColor(Color.GREEN);
+                } else {
+                    etPassword.setBackgroundColor(Color.RED);
+                    etPasswordConfirm.setBackgroundColor(Color.RED);
+                }
             }
 
             @Override
@@ -81,6 +127,7 @@ public class WriteList extends AppCompatActivity {
 
             }
         });
+*/
 
         /********  성별입력(최초선택)    ********/
         if(man.isChecked()) {
@@ -114,12 +161,52 @@ public class WriteList extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 city = (String)adapterView.getItemAtPosition(position);
-//                Log.d("------>city", city);
+//                Log.d("========city", city);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                Log.d("------>", "onNothingSelected");
+                Log.d("------>", "onNothingCitySelected");
+            }
+        });
+
+        spinnerGu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                gu = (String)adapterView.getItemAtPosition(position);
+//                Log.d("=========gu", gu);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.d("------>", "onNothingGuSelected");
+            }
+        });
+
+        spinnerDong.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                dong = (String)adapterView.getItemAtPosition(position);
+//                Log.d("========dong", dong);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.d("------>", "onNothingDongSelected");
+            }
+        });
+
+        /********   생년월일입력    ********/
+        spinnerMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                month = (String)adapterView.getItemAtPosition(position);
+//                Log.d("=========month", month);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.d("------>", "onNothingMonthSelected");
             }
         });
 
@@ -166,19 +253,46 @@ public class WriteList extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
     private class FetchUserListAsyncTask extends SafeAsyncTask<List<User>> {
 
         @Override
         public List<User> call() throws Exception {
-            Log.d("id : ", etID.getText().toString());
-            Log.d("password : ", etPassword.getText().toString());
-            Log.d("gender ", gender);
-            Log.d("city", city);
+            id = etID.getText().toString();
+            password = etPassword.getText().toString();
 
-            List<User> list = userService.fetchUserList(id, password, gender);
+            year = etYear.getText().toString();
+            day = etDay.getText().toString();
+
+            marketName = etMarketName.getText().toString();
+            marketAddress = etMarketAddress.getText().toString();
+            marketAddressDetail = etMarketAddressDetail.getText().toString();
+            marketPhoneNumber = etMarketPhoneNumber.getText().toString();
+            marketIntroduce = etMarketIntroduce.getText().toString();
+            marketIntroduceDetail = etMarketIntroduceDetail.getText().toString();
+
+//            Log.d("id : ", id);
+//            Log.d("password : ", password);
+//            Log.d("gender ", gender);
+//
+//            Log.d("city", city);
+//            Log.d("gu", gu);
+//            Log.d("dong", dong);
+//
+//            Log.d("년도 : ", year);
+//            Log.d("월 : ", month);
+//            Log.d("일 : ", day);
+//
+//            Log.d("매장명", marketName);
+//            Log.d("매장주소", marketAddress);
+//            Log.d("매장상세주소", marketAddressDetail);
+//            Log.d("매장번호", marketPhoneNumber);
+//            Log.d("매장소개", marketIntroduce);
+//            Log.d("매장상세소개", marketIntroduceDetail);
+
+            List<User> list = userService.fetchUserList(id, password, gender, city+gu+dong, year+month+day,
+                    marketName, marketAddress+" "+ marketAddressDetail, marketPhoneNumber, marketIntroduce+" "+marketIntroduceDetail);
 
             return list;
         }
@@ -192,6 +306,7 @@ public class WriteList extends AppCompatActivity {
         @Override
         protected void onSuccess(List<User> users) throws Exception {
             // super.onSuccess(users);
+            Log.d("성공", "성공해쓰요");
 
         }
     }

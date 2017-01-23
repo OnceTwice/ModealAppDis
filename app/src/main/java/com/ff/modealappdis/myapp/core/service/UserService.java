@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UserService {
     public List<User> fetchUserList() {
-        String url = "http://192.168.1.26:8088/myapp-api/api/user/list";
+        String url = "http://192.168.0.4:8088/myapp-api/api/user/list";
         HttpRequest httpRequest = HttpRequest.get(url);
 
         httpRequest.contentType(HttpRequest.CONTENT_TYPE_FORM);     // 전달 타입

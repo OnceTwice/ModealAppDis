@@ -15,6 +15,7 @@
             android:text="매장명 : " />
 
         <EditText
+            android:id="@+id/etMarketName"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="@android:drawable/editbox_background"
@@ -29,18 +30,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="매장 주소 : "/>
+            android:text="매장 주소 : " />
 
         <EditText
+            android:id="@+id/etMarketAddress"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="@android:drawable/editbox_background"
             android:hint="매장주소"
-            android:inputType="text"/>
+            android:inputType="text" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="검색"/>
+            android:text="검색" />
     </LinearLayout>
 
     <LinearLayout
@@ -48,10 +51,11 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:id="@+id/etMarketAddressDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:drawable/editbox_background"
-            android:hint="상세주소"/>
+            android:hint="상세주소" />
     </LinearLayout>
 
     <LinearLayout
@@ -61,13 +65,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="매장전화번호"/>
+            android:text="매장전화번호" />
 
         <EditText
+            android:id="@+id/etMarketPhoneNumber"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="@android:drawable/editbox_background"
-            android:hint="매장전화번호"/>
+            android:hint="매장전화번호" />
     </LinearLayout>
 
     <LinearLayout
@@ -77,22 +82,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="매장사진"/>
+            android:text="매장사진" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="업로드"/>
+            android:text="업로드" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/ic_launcher" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/btn_dialog"/>
+            android:src="@android:drawable/btn_dialog" />
     </LinearLayout>
 
 
@@ -103,13 +108,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="매장소개"/>
+            android:text="매장소개" />
 
         <EditText
+            android:id="@+id/etMarketIntroduce"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:drawable/editbox_background"
-            android:hint="매장소개"/>
+            android:hint="매장소개" />
     </LinearLayout>
 
     <LinearLayout
@@ -117,10 +123,11 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:id="@+id/etMarketIntroduceDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:drawable/editbox_background"
-            android:hint="매장상세소개"/>
+            android:hint="매장상세소개" />
     </LinearLayout>
 
 </LinearLayout>
