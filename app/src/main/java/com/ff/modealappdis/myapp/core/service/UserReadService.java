@@ -1,6 +1,7 @@
 package com.ff.modealappdis.myapp.core.service;
 
 import com.ff.modealappdis.myapp.core.domain.User;
+import com.ff.modealappdis.myapp.core.domain.UserVo;
 import com.ff.modealappdis.network.JSONResult;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.google.gson.Gson;
@@ -10,9 +11,9 @@ import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.util.List;
 
-public class UserService {
-    public List<User> fetchUserList() {
-        String url = "http://192.168.1.26:8088/myapp-api/api/user/list";
+public class UserReadService {
+    public List<UserVo> fetchUserList() {
+        String url = "http://192.168.1.26:8088/modeal/user/app/list";
         HttpRequest httpRequest = HttpRequest.get(url);
 
         httpRequest.contentType(HttpRequest.CONTENT_TYPE_FORM);     // 전달 타입
@@ -29,7 +30,7 @@ public class UserService {
         }
 //        Log.d("33", "33333333333333333333333");
 
-        JSONResultUserList jsonResult = fromJSON(httpRequest, JSONResultUserList.class);
+        UserReadService.JSONResultUserList jsonResult = fromJSON(httpRequest, UserReadService.JSONResultUserList.class);
 //        Log.d("44", "444444444444444444444444");
 
 //        System.out.println(jsonResult.getData());
@@ -37,7 +38,7 @@ public class UserService {
         return jsonResult.getData();        // DataT vs List<User>
     }
 
-    private class JSONResultUserList extends JSONResult<List<User>> {
+    private class JSONResultUserList extends JSONResult<List<UserVo>> {
 
     }
 

@@ -16,12 +16,13 @@ public class UserWriteService {
 
     public List<User> fetchUserList(String id, String password, String gender, String location, String birth, String mkName, String mkAddress, String mkPhoneN, String mkIntroduce) {
         // String url = "http://192.168.1.26:8088/myapp-api/api/user/input";
-        // String url = "http://192.168.1.26:8088/modeal/user/app/input";
+         String url = "http://192.168.1.26:8088/modeal/user/app/input";
         // String url = "http://10.10.102.57:8088/modeal/user/app/input";
-        String url = "http://192.168.0.4:8088/modeal/user/app/input";
+//        String url = "http://192.168.0.4:8088/modeal/user/app/input";
         HttpRequest httpRequest = HttpRequest.get(url);
 
         httpRequest.contentType(HttpRequest.CONTENT_TYPE_FORM);     // 전달 타입
+//        httpRequest.contentType(HttpRequest.CONTENT_TYPE_JSON);
         httpRequest.accept(httpRequest.CONTENT_TYPE_JSON);          // 받을 타입
         httpRequest.connectTimeout(3000);
         httpRequest.readTimeout(3000);
