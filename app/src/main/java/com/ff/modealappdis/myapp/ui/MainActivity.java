@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.ff.modealappdis.R;
+import com.ff.modealappdis.myapp.ui.fragment.MainFragmentActivity;
 import com.ff.modealappdis.myapp.ui.user.ReadList;
 import com.ff.modealappdis.myapp.ui.user.UserList;
 import com.ff.modealappdis.myapp.ui.user.WriteList;
@@ -40,5 +41,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        findViewById(R.id.btnFragment).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainFragmentActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

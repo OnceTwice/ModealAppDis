@@ -1,10 +1,9 @@
 package com.ff.modealappdis.myapp.ui.user;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 
 import com.ff.modealappdis.R;
@@ -14,14 +13,17 @@ import com.ff.modealappdis.network.SafeAsyncTask;
 
 import java.util.List;
 
-public class ReadList extends AppCompatActivity {
+public class ReadList extends ListActivity {
+    private UserVoListArrayAdapter userVoListArrayAdapter = null;
     private UserReadService userReadService = new UserReadService();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.read_list);
+        userVoListArrayAdapter = new UserVoListArrayAdapter(this);
+        setListAdapter(userVoListArrayAdapter);
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.uservo_list);
 
         findViewById(R.id.user_modify).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,7 +33,14 @@ public class ReadList extends AppCompatActivity {
             }
         });
 
-        new FetchUserListAsyncTask().execute();
+        findViewById(R.id.btnListRead).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new FetchUserListAsyncTask().execute();
+            }
+        });
+
+//        new FetchUserListAsyncTask().execute();
 
 //        userReadService.fetchUserList();      // 쓰레드 없이 사용할 경우 에러 발생
     }
@@ -50,8 +59,9 @@ public class ReadList extends AppCompatActivity {
         }
 
         @Override
-        protected void onSuccess(List<UserVo> userVos) throws Exception {
-            super.onSuccess(userVos);
+        protected void onSuccess(List<UserVo> userVo) throws Exception {
+            userVoListArrayAdapter.add(userVo);         // web으로부터 넘어온 데이터를 추가
+//            super.onSuccess(userVos);
         }
     }
 }

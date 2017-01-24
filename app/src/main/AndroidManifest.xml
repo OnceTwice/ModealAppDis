@@ -27,6 +27,7 @@
         <activity android:name=".myapp.ui.user.WriteList" />
         <activity android:name=".myapp.ui.user.ReadList" />
         <activity android:name=".myapp.ui.user.UserModify" />
+        <activity android:name=".myapp.ui.fragment.MainFragmentActivity"/>
     </application>
 
 </manifest>

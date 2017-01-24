@@ -19,11 +19,13 @@
                 android:text="ID(Email)"/>
 
             <EditText
+                android:id="@+id/etID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/editbox_background"
                 android:hint="ID(Email)"
                 android:inputType="text"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -36,11 +38,13 @@
                 android:text="GENDER"/>
 
             <EditText
+                android:id="@+id/etGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/editbox_background"
                 android:hint="GENDER"
                 android:inputType="text" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -53,11 +57,13 @@
                 android:text="거주지역"/>
 
             <EditText
+                android:id="@+id/etLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/editbox_background"
                 android:hint="거주지역"
                 android:inputType="text" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -70,26 +76,17 @@
                 android:text="BIRTH"/>
 
             <EditText
+                android:id="@+id/etBirth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/editbox_background"
                 android:hint="BIRTH"
                 android:inputType="text" />
 
+
         </LinearLayout>
 
         <include layout="@layout/read_list_business" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/user_modify"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="회원정보수정"/>
-        </LinearLayout>
 
     </LinearLayout>
 

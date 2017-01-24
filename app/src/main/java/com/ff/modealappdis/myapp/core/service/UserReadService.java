@@ -1,6 +1,5 @@
 package com.ff.modealappdis.myapp.core.service;
 
-import com.ff.modealappdis.myapp.core.domain.User;
 import com.ff.modealappdis.myapp.core.domain.UserVo;
 import com.ff.modealappdis.network.JSONResult;
 import com.github.kevinsawicki.http.HttpRequest;
@@ -41,7 +40,6 @@ public class UserReadService {
     private class JSONResultUserList extends JSONResult<List<UserVo>> {
 
     }
-
 
     // JSON 문자열을 자바 객체로 변환
     protected <V> V fromJSON( HttpRequest request, Class<V> target ) {
